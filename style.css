@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Colors --- Primary */
+    --clr-soft-cyan: hsl(174, 77%, 80%);
+    --clr-strong-cyan: hsl(174, 86%, 45%);
+    --clr-light-grayish-red: hsl(14, 92%, 95%);
+    --clr-light-red: hsl(15, 100%, 70%);
+    --clr-pale-blue: hsl(226, 100%, 87%);
+    /* Colors --- Neutral */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-very-pale-blue: hsl(230, 100%, 90%);
+    --clr-light-gray-blue-emp-sl: hsl(224, 65%, 95%);
+    --clr-light-gray-blue-tgb: hsl(223, 50%, 87%);
+    --clr-gray-blue: hsl(225, 20%, 60%);
+    --clr-dark-de-blue: hsl(227, 35%, 25%);
+
+    /* Font size */
+    --fs-main: 1rem;
+
+    /* Font weight */
+    --fw-600: 600;
+    --fw-800: 800;
+
+    /* Font family */
+    --ff: 'Manrope', sans-serif;
+}
+
+/*Box Sizing Rules  */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    min-height: 100vh;
+    font-family: var(--ff);
+    background-image: url('./images/bg-pattern.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+body {
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    display: grid;
+    place-content: center;
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    border: none;
+    outline: none;
+    fill: none;
+    background: none;
+    cursor: pointer;
+}
+
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: var(--fw-800);
+    color: var(--clr-dark-de-blue);
+    text-align: center;
+}
+
+
+h2 {
+    font-size: 0.9rem;
+    font-weight: var(--fw-600);
+    color: var(--clr-gray-blue);
+
+}
+
+
+.main-content {
+    display: grid;
+    justify-items: center;
+}
+
+.main-card {
+    background-color: var(--clr-white);
+    box-shadow: 0.5px 0.5px 12px var(--clr-very-pale-blue);
+    border-radius: 0.8rem;
+    display: grid;
+    width: fit-content;
+    height: fit-content;
+    color: var(--clr-gray-blue);
+    font-size: 0.9rem;
+
+}
+
+.top-container {
+    display: grid;
+    border-bottom: 0.5px solid var(--clr-light-gray-blue-emp-sl);
+    padding-inline: 2rem;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem;
+    align-items: center;
+    gap: 5vw;
+}
+
+.bottom-container>button {
+    background-color: var(--clr-dark-de-blue);
+    color: var(--clr-white);
+    border-radius: 2rem;
+    padding: 0.8rem 3rem;
+    height: fit-content;
+    width: fit-content;
+}
+
+.bottom-container>ul {
+    list-style-image: url('./images/icon-check.svg');
+}
+
+.bottom-container>ul li {
+    padding-left: 0.9rem;
+    margin-block: 0.3rem;
+}
+
+.top-container>div:nth-child(2) {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2rem 0 3rem 0;
+}
+
+input[type="checkbox"].toggle {
+    opacity: 0;
+    position: absolute;
+    left: -9000vw;
+    top: -9000vh;
+}
+
+label {
+    visibility: none;
+}
+
+
+input[type="checkbox"].toggle+label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"].toggle+label::before {
+    content: "";
+    width: 2.6rem;
+    height: 1.5rem;
+    background-color: var(--clr-light-gray-blue-tgb);
+    border-radius: 1em;
+    transition: background-color 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle+label::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    content: "";
+    left: 0.3rem;
+    width: 1.0rem;
+    height: 1.0rem;
+    background-color: var(--clr-white);
+    border-radius: 50%;
+    transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+
+input[type="checkbox"].toggle:checked+label::before {
+    background-color: var(--clr-strong-cyan)
+}
+
+input[type="checkbox"].toggle:checked+label::after {
+    content: "";
+    transform: translateX(1.05rem);
+}
+
+
+.discount>span {
+    background-color: var(--clr-light-grayish-red);
+    color: var(--clr-light-red);
+    margin-inline: 0.5rem;
+    padding-inline: 0.5rem;
+    border-radius: 10rem;
+    font-size: 0.8rem;
+    font-weight: var(--fw-800);
+}
+
+.discount>span:nth-child(2) {
+    display: none;
+}
+
+
+.range-slider {
+    grid-area: range-slider;
+    display: grid;
+    margin-block: 1.5rem;
+
+}
+
+/* Progress thumb styling */
+input[type="range"]::-moz-range-thumb {
+    background-color: var(--clr-strong-cyan);
+    background-image: url('./images/icon-slider.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    box-shadow: 5px 5px 30px var(--clr-strong-cyan);
+    outline: none;
+    border: none;
+    border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-track {
+    background-color: var(--clr-light-gray-blue-tgb);
+    height: .5rem;
+    border-radius: 10rem;
+
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: var(--clr-soft-cyan);
+    height: .5rem;
+    border-radius: 10rem;
+} 
+
+/********** Range Input Styles **********/
+/*Range Reset*/
+input[type="range"] {
+    -webkit-appearance: none;
+     appearance: none;
+     background: transparent;
+     cursor: pointer;
+     
+ }
+ 
+ /* Removes default focus */
+ input[type="range"]:focus {
+   outline: none;
+ }
+ 
+ /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+ /* slider track */
+ input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--clr-light-gray-blue-tgb);
+    border-radius: 0.5rem;
+    height: 0.5rem;  
+ }
+ 
+
+ 
+ 
+ /* slider thumb */
+ input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    
+    margin-top: -1rem;
+    background-color: var(--clr-strong-cyan);
+    background-image: url('./images/icon-slider.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    box-shadow: 5px 5px 30px var(--clr-strong-cyan);
+    outline: none;
+    border: none;
+    border-radius: 50%;
+ }
+ 
+ 
+
+
+.page-views {
+    grid-area: page-views;
+    justify-self: flex-start;
+    font-weight: var(--fw-800);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    align-self: center;
+}
+
+.per-month {
+    grid-area: per-month;
+    justify-self: flex-end;
+    align-self: center;
+}
+
+.top-container>div:first-child {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-areas:
+        "page-views ... per-month"
+        "range-slider range-slider range-slider"
+    ;
+
+}
+
+.main-content>div:first-child {
+    display: grid;
+    justify-items: center;
+    background-image: url('./images/pattern-circles.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 8rem;
+    margin-bottom: 3rem;
+    align-content: center;
+    gap: 0.5rem;
+}
+
+.per-month>span {
+    font-weight: var(--fw-800);
+    font-size: 2rem;
+    color: var(--clr-dark-de-blue);
+    background: none;
+    padding: 0;
+}
+
+
+@media (width < 600px) {
+
+    .top-container>div:first-child {
+
+        grid-template-areas:
+            "... page-views ..."
+            "range-slider range-slider range-slider"
+            "... per-month ..."
+        ;
+    }
+
+    .discount>span:nth-child(1) {
+        display: none;
+    }
+
+    .discount>span:nth-child(2) {
+        display: block;
+    }
+
+
+
+    .main-card {
+        margin-inline: 1rem;
+        margin-bottom: 2rem;
+        font-size: 0.7rem;
+    }
+
+
+    .main-content>div:first-child {
+        height: 10rem;
+    }
+
+    .page-views {
+        justify-self: center;
+        margin-block: 2rem;
+    }
+
+    .per-month {
+        justify-self: center;
+        margin-top: 2rem;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .top-container>div:nth-child(2) {
+        gap: 0.4rem;
+        align-items: center;
+    }
+    
+
+}
